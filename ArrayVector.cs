@@ -26,7 +26,7 @@ namespace LAba1
         }
         public int SumLessFromNechetIndex()
         {
-            return 0;
+            return coordintates.Where(p => (p > 0) & (p < coordintates.Sum(p => Math.Abs(p)))).Sum(p => p);
         }
         public int MultChet()
         {
@@ -35,6 +35,14 @@ namespace LAba1
         public int MultNechet()
         {
             return coordintates.Where(p => (p % 3 != 0) & (p % 2 == 1)).Aggregate((x,y) => x * y);
+        }
+        public void SortUp()
+        {
+            coordintates = coordintates.OrderBy(p => p).ToArray();
+        }
+        public void SortDown()
+        {
+            coordintates = coordintates.OrderByDescending(p => p).ToArray();  
         }
     }
 }

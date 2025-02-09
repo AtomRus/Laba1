@@ -24,6 +24,17 @@ namespace LAba1
         {
             return coordintates.Where(p => (p > 0) & (p % 2 == 0)).Sum(p => p);
         }
-
+        public int SumLessFromNechetIndex()
+        {
+            return 0;
+        }
+        public int MultChet()
+        {
+            return coordintates.Where(p => (p > 0) & (p % 2 == 0)).Aggregate((x,y) => x * y);
+        }
+        public int MultNechet()
+        {
+            return coordintates.Where(p => (p % 3 != 0) & (p % 2 == 1)).Aggregate((x,y) => x * y);
+        }
     }
 }

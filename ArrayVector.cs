@@ -1,4 +1,4 @@
-namespace LAba1
+namespace Laba1
 {
     public class ArrayVector
     {

@@ -1,9 +1,24 @@
+using System.ComponentModel;
+
 namespace Laba1 
 {
     public class SolutionFirstTask : AbstractSolution
     {
         FacadeArrayVector facadeArrayVector = new FacadeArrayVector();
-
+        public int GetCoordinate(ArrayVector arrayVector)
+        {
+            Console.WriteLine("Введите нужную координату");
+            int index = InputDataIntoTryParseInt();
+            
+            try 
+            {
+                return arrayVector[index - 1];
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+        }
         public ArrayVector CreateVector()
         {
             Console.WriteLine("Введите размерность вектора");
@@ -19,16 +34,7 @@ namespace Laba1
                 Console.WriteLine("Введите " + i + "-ую координату вектора");
                 inputCoordinates[i] = InputDataIntoTryParseInt();
             }
-            ArrayVector arrayVector = new ArrayVector();
-            try
-            {
-                arrayVector = facadeArrayVector.TryCreateVector(inputCoordinates);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-            return arrayVector;
+            return new ArrayVector(inputCoordinates);
         }
         public void ChangeVector(ArrayVector arrayVector)
         {
@@ -46,8 +52,40 @@ namespace Laba1
         }
         public double GetNormalVector(ArrayVector arrayVector)
         {
-            return facadeArrayVector.TryGetNormalVector(arrayVector);
+            return arrayVector.GetNorm();
         }
-        
+        public int GetSumPositivesFromChetIndex(ArrayVector arrayVector)
+        {
+            return arrayVector.SumPositivesFromChetIndex();
+        }
+        public int GetSumLessFromNechetIndex(ArrayVector arrayVector)
+        {
+            return arrayVector.SumLessFromNechetIndex();
+        }
+        public double GetMultChet(ArrayVector arrayVector)
+        {
+            return arrayVector.MultChet();
+        }
+        public double GetMultNechet(ArrayVector arrayVector)
+        {
+            return arrayVector.MultNechet();
+        }
+        public ArrayVector SumVector(ArrayVector arrayVector1, ArrayVector arrayVector2)
+        {
+            ArrayVector exportVector = new ArrayVector();
+            try
+            {
+                exportVector = facadeArrayVector.TrySumVector(arrayVector1, arrayVector2);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+            return exportVector; 
+        }
+        public ArrayVector MultiplyVectorByNumber(ArrayVector arrayVector, int digit)
+        {
+            return facadeArrayVector.MultiplyVectorByNumber(arrayVector, digit);
+        }
     }
 }

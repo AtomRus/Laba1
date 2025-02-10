@@ -13,8 +13,8 @@ namespace Laba1
         }
         public int this[int index]
         {
-            get => coordintates[index - 1];
-            set => coordintates[index - 1] = value;
+            get => coordintates[index];
+            set => coordintates[index] = value;
         }
         public int[] GetCoordinates()
         {

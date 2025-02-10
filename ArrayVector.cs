@@ -12,7 +12,7 @@ namespace Laba1
             this.coordintates = coordinates;
         }
         public int this[int index]
-        {
+        { 
             get => coordintates[index];
             set => coordintates[index] = value;
         }

@@ -7,17 +7,26 @@ namespace Laba1
         FacadeArrayVector facadeArrayVector = new FacadeArrayVector();
         public int GetCoordinate(ArrayVector arrayVector)
         {
-            Console.WriteLine("Введите нужную координату");
+            Console.WriteLine("Выберите нужную координату");
             int index = InputDataIntoTryParseInt();
-            
-            try 
+            while (index < 0 || index > arrayVector.GetCoordinates().Length)
             {
-                return arrayVector[index - 1];
+                Console.WriteLine("Ошибка. Неподходящий индекс. Введите индекс заново");
+                index = InputDataIntoTryParseInt();
             }
-            catch (Exception exception)
+            return arrayVector[index - 1];
+        }
+        public void SetCoordinate(ArrayVector arrayVector)
+        {
+            int index = InputDataIntoTryParseInt();
+            while (index < 0 || index > arrayVector.GetCoordinates().Length)
             {
-                Console.WriteLine(exception);
+                Console.WriteLine("Ошибка. Неподходящий индекс. Введите индекс заново");
+                index = InputDataIntoTryParseInt();
             }
+            Console.WriteLine("Выберите новую координату");
+            int newCoord = InputDataIntoTryParseInt();
+            arrayVector[index - 1] = newCoord;
         }
         public ArrayVector CreateVector()
         {

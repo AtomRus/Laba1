@@ -14,6 +14,7 @@ namespace MyConsoleApp.Tests
 
         [TestCase(new int[]{10,24}, 676)]
         [TestCase(new int[]{1,1}, 2)]
+        [TestCase(new int[]{1}, 1)]
         public void GetNorm10and24Equal26(int[] input, double expectedSquared)
         {
             ArrayVector arrayVector = new ArrayVector(input);

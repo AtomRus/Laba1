@@ -13,8 +13,12 @@ namespace Laba1
         }
         public int this[int index]
         {
-            get => coordintates[index];
-            set => coordintates[index] = value;
+            get => coordintates[index - 1];
+            set => coordintates[index - 1] = value;
+        }
+        public int[] GetCoordinates()
+        {
+            return coordintates;
         }
         public double GetNorm()
         {
@@ -22,11 +26,11 @@ namespace Laba1
         }
         public int SumPositivesFromChetIndex()
         {
-            return coordintates.Where(p => (p > 0) & (p % 2 == 0)).Sum(p => p);
+            return coordintates.Where((number,index) => (number > 0) & ((index + 1) % 2 == 0)).Sum(p => p);
         }
         public int SumLessFromNechetIndex()
         {
-            return coordintates.Where(p => (p > 0) & (p < coordintates.Sum(p => Math.Abs(p)))).Sum(p => p);
+            return coordintates.Where((number,index) => ((index + 1) % 2 != 0) & (number < coordintates.Sum(p => Math.Abs(p))/coordintates.Length)).Sum(p => p);
         }
         public int MultChet()
         {

@@ -4,7 +4,6 @@ namespace Laba1
 {
     public class SolutionFirstTask : AbstractSolution
     {
-        FacadeArrayVector facadeArrayVector = new FacadeArrayVector();
         public int GetCoordinate(ArrayVector arrayVector)
         {
             Console.WriteLine("Выберите нужную координату");
@@ -45,20 +44,6 @@ namespace Laba1
             }
             return new ArrayVector(inputCoordinates);
         }
-        public void ChangeVector(ArrayVector arrayVector)
-        {
-            Console.WriteLine("Введите изменяемую координату");
-            int coordinate = InputDataIntoTryParseInt();
-            Console.WriteLine("Введите изменяемую координату");
-            int newVal = InputDataIntoTryParseInt();
-            try
-            {
-                facadeArrayVector.TryChangeVector(arrayVector, coordinate, newVal);
-            } catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-        }
         public double GetNormalVector(ArrayVector arrayVector)
         {
             return arrayVector.GetNorm();
@@ -79,22 +64,26 @@ namespace Laba1
         {
             return arrayVector.MultNechet();
         }
-        public ArrayVector SumVector(ArrayVector arrayVector1, ArrayVector arrayVector2)
+        public ArrayVector TrySumVector(ArrayVector arrayVector1, ArrayVector arrayVector2)
         {
-            ArrayVector exportVector = new ArrayVector();
-            try
+            if (arrayVector1.GetCoordinates().Length != arrayVector2.GetCoordinates().Length)
             {
-                exportVector = facadeArrayVector.TrySumVector(arrayVector1, arrayVector2);
+                throw new Exception("Невозможно сложить вектора разных размерностей");
             }
-            catch (Exception exception)
+            ArrayVector arrayVector = new ArrayVector(arrayVector1.GetCoordinates());
+            for(int i = 0; i < arrayVector1.GetCoordinates().Length; i++)
             {
-                Console.WriteLine(exception);
+                arrayVector[i] = arrayVector1[i] + arrayVector2[i];
             }
-            return exportVector; 
+            return arrayVector; 
         }
         public ArrayVector MultiplyVectorByNumber(ArrayVector arrayVector, int digit)
         {
-            return facadeArrayVector.MultiplyVectorByNumber(arrayVector, digit);
+            for(int i = 0; i < arrayVector.GetCoordinates().Length; i++)
+            {
+                arrayVector[i] *= digit;
+            }
+            return arrayVector;
         }
     }
 }

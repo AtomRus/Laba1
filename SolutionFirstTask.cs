@@ -4,6 +4,16 @@ namespace Laba1
 {
     public class SolutionFirstTask : AbstractSolution
     {
+        public void ShowCoordinates(ArrayVector arrayVector)
+        {
+            Console.WriteLine();
+            Console.Write("Координаты вектора: ");
+            for(int i = 0; i < arrayVector.GetCoordinates().Length; i++)
+            {
+                Console.Write(arrayVector[i] + " ");
+            }
+            Console.WriteLine();
+        }
         public int GetCoordinate(ArrayVector arrayVector)
         {
             Console.WriteLine("Выберите нужную координату");
@@ -44,7 +54,7 @@ namespace Laba1
             }
             return new ArrayVector(inputCoordinates);
         }
-        public double GetNormalVector(ArrayVector arrayVector)
+        public double GetNormVector(ArrayVector arrayVector)
         {
             return arrayVector.GetNorm();
         }
@@ -64,26 +74,13 @@ namespace Laba1
         {
             return arrayVector.MultNechet();
         }
-        public ArrayVector TrySumVector(ArrayVector arrayVector1, ArrayVector arrayVector2)
+        public void SortCoordinates(ArrayVector arrayVector)
         {
-            if (arrayVector1.GetCoordinates().Length != arrayVector2.GetCoordinates().Length)
-            {
-                throw new Exception("Невозможно сложить вектора разных размерностей");
-            }
-            ArrayVector arrayVector = new ArrayVector(arrayVector1.GetCoordinates());
-            for(int i = 0; i < arrayVector1.GetCoordinates().Length; i++)
-            {
-                arrayVector[i] = arrayVector1[i] + arrayVector2[i];
-            }
-            return arrayVector; 
+            arrayVector.SortUp();
         }
-        public ArrayVector MultiplyVectorByNumber(ArrayVector arrayVector, int digit)
+        public void SortCoordinatesDescending(ArrayVector arrayVector)
         {
-            for(int i = 0; i < arrayVector.GetCoordinates().Length; i++)
-            {
-                arrayVector[i] *= digit;
-            }
-            return arrayVector;
+            arrayVector.SortDown();
         }
     }
 }

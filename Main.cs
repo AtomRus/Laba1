@@ -1,4 +1,6 @@
 using System.ComponentModel.Design;
+using System.Numerics;
+using Laba;
 
 namespace Laba1 
 {
@@ -85,6 +87,7 @@ public class Program
             secondMenuHeaders.Add("В главное меню");
             bool main_flag = true;
             int kursor = 1;
+            SolutionTask solutionFirstTask = new SolutionTask();
             while (main_flag)
             {
                 Console.WriteLine("Выберите тестируемый класс");
@@ -92,7 +95,6 @@ public class Program
                 switch (kursor)
                 {
                     case 1:
-                    SolutionFirstTask solutionFirstTask = new SolutionFirstTask();
                     ArrayVector arrayVector = new ArrayVector();
                     bool existArrayVector = false;
                     bool firstMenuFlag = true;
@@ -211,6 +213,51 @@ public class Program
                     }
                     break;
                     case 2:
+                        bool secondMenuFlag = true;
+                        kursor = 1;
+                        while (secondMenuFlag)
+                        {
+                            kursor = MenuRendering(secondMenuHeaders, kursor);
+                            switch (kursor)
+                            {
+                                case 1:
+                                Console.WriteLine("Создание первого вектора");
+                                ArrayVector arrayVector1 = solutionFirstTask.CreateVector();
+                                Console.WriteLine("Создание второго вектора");
+                                ArrayVector arrayVector2 = solutionFirstTask.CreateVector();
+                                Console.WriteLine("Вывод");
+                                solutionFirstTask.ShowCoordinates(Vectors.SumSt(arrayVector1, arrayVector2));
+                                break;
+                                case 2:
+                                Console.WriteLine("Создание вектора");
+                                ArrayVector arrayVector3 = solutionFirstTask.CreateVector();
+                                Console.WriteLine("Введите скаляр");
+                                int digit = solutionFirstTask.InputDataIntoTryParseInt();
+                                Console.WriteLine("Вывод");
+                                solutionFirstTask.ShowCoordinates(Vectors.MultNumberSt(arrayVector3, digit));
+                                break;
+                                case 3:
+                                Console.WriteLine("Создание первого вектора");
+                                ArrayVector arrayVector4 = solutionFirstTask.CreateVector();
+                                Console.WriteLine("Создание второго вектора");
+                                ArrayVector arrayVector5 = solutionFirstTask.CreateVector();
+                                Console.WriteLine("Вывод");
+                                Console.WriteLine("Скалярное произведение векторов равно: " + Vectors.ScalarSt(arrayVector4, arrayVector5));
+                                break;
+                                case 4:
+                                Console.WriteLine("Создание первого вектора");
+                                ArrayVector arrayVector6 = solutionFirstTask.CreateVector();
+                                Console.WriteLine("Вывод");
+                                Console.WriteLine("Скалярное произведение векторов равно: " + Vectors.GetNormSt(arrayVector6));
+                                break;
+                                case 5:
+                                secondMenuFlag = false;
+                                break;
+                            }
+                        }
+                    break;
+                    case 3:
+                    main_flag = false;
                     break;
                 }
             }

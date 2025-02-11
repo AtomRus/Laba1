@@ -2,8 +2,30 @@ using System.ComponentModel;
 
 namespace Laba1 
 {
-    public class SolutionFirstTask : AbstractSolution
+    public class SolutionTask 
     {
+        public double InputDataIntoTryParseDouble()
+        {
+            double variable;
+            string inputData = Console.ReadLine();
+            while (!Double.TryParse(inputData, out variable))
+            {
+                Console.WriteLine("Некорректный ввод данных. Введите еще раз число");
+                inputData = Console.ReadLine();
+            }
+            return variable;
+        }
+        public int InputDataIntoTryParseInt()
+        {
+            int variable;
+            string inputData = Console.ReadLine();
+            while (!Int32.TryParse(inputData, out variable))
+            {
+                Console.WriteLine("Некорректный ввод данных. Введите еще раз число");
+                inputData = Console.ReadLine();
+            }
+            return variable;
+        }
         public void ShowCoordinates(ArrayVector arrayVector)
         {
             Console.WriteLine();

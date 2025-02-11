@@ -34,7 +34,7 @@ namespace Laba1
         }
         public int MultChet()
         {
-            return coordintates.Where(p => (p > 0) & (p % 2 == 0)).Aggregate((x,y) => x * y);
+            return coordintates.Where(p => (p > 0) && (p % 2 == 0)).Aggregate((x,y) => x * y);
         }
         public int MultNechet()
         {

@@ -34,11 +34,47 @@ namespace Laba1
         }
         public int MultChet()
         {
-            return coordintates.Where(p => (p > 0) & (p % 2 == 0)).Aggregate((x,y) => x * y);
+            int product = 1;
+            bool f = false;
+
+            foreach (int element in coordintates)
+            {
+                if (element > 0 && element % 2 == 0)
+                {
+                    f = true;
+                    product *= element;
+                    if (product == 0) return 0;
+                }
+            }
+
+            if (!f)
+            {
+                return 0;
+            }
+            
+            return product;
         }
         public int MultNechet()
         {
-            return coordintates.Where(p => (p % 3 != 0) & (p % 2 == 1)).Aggregate((x,y) => x * y);
+            int product = 1;
+            bool f = false;
+
+            foreach (int element in coordintates)
+            {
+                if (element % 2 != 0 && element % 3 != 0)
+                {
+                    f = true;
+                    product *= element;
+                    if (product == 0) return 0;
+                }
+            }
+
+            if (!f)
+            {
+                return 0;
+            }
+
+            return product;
         }
         public void SortUp()
         {

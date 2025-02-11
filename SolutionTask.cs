@@ -2,9 +2,40 @@ using System.ComponentModel;
 
 namespace Laba1 
 {
-    public class SolutionFirstTask : AbstractSolution
+    public class SolutionTask 
     {
-        FacadeArrayVector facadeArrayVector = new FacadeArrayVector();
+        public double InputDataIntoTryParseDouble()
+        {
+            double variable;
+            string inputData = Console.ReadLine();
+            while (!Double.TryParse(inputData, out variable))
+            {
+                Console.WriteLine("Некорректный ввод данных. Введите еще раз число");
+                inputData = Console.ReadLine();
+            }
+            return variable;
+        }
+        public int InputDataIntoTryParseInt()
+        {
+            int variable;
+            string inputData = Console.ReadLine();
+            while (!Int32.TryParse(inputData, out variable))
+            {
+                Console.WriteLine("Некорректный ввод данных. Введите еще раз число");
+                inputData = Console.ReadLine();
+            }
+            return variable;
+        }
+        public void ShowCoordinates(ArrayVector arrayVector)
+        {
+            Console.WriteLine();
+            Console.Write("Координаты вектора: ");
+            for(int i = 0; i < arrayVector.GetCoordinates().Length; i++)
+            {
+                Console.Write(arrayVector[i] + " ");
+            }
+            Console.WriteLine();
+        }
         public int GetCoordinate(ArrayVector arrayVector)
         {
             Console.WriteLine("Выберите нужную координату");
@@ -45,21 +76,7 @@ namespace Laba1
             }
             return new ArrayVector(inputCoordinates);
         }
-        public void ChangeVector(ArrayVector arrayVector)
-        {
-            Console.WriteLine("Введите изменяемую координату");
-            int coordinate = InputDataIntoTryParseInt();
-            Console.WriteLine("Введите изменяемую координату");
-            int newVal = InputDataIntoTryParseInt();
-            try
-            {
-                facadeArrayVector.TryChangeVector(arrayVector, coordinate, newVal);
-            } catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-        }
-        public double GetNormalVector(ArrayVector arrayVector)
+        public double GetNormVector(ArrayVector arrayVector)
         {
             return arrayVector.GetNorm();
         }
@@ -79,22 +96,13 @@ namespace Laba1
         {
             return arrayVector.MultNechet();
         }
-        public ArrayVector SumVector(ArrayVector arrayVector1, ArrayVector arrayVector2)
+        public void SortCoordinates(ArrayVector arrayVector)
         {
-            ArrayVector exportVector = new ArrayVector();
-            try
-            {
-                exportVector = facadeArrayVector.TrySumVector(arrayVector1, arrayVector2);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-            return exportVector; 
+            arrayVector.SortUp();
         }
-        public ArrayVector MultiplyVectorByNumber(ArrayVector arrayVector, int digit)
+        public void SortCoordinatesDescending(ArrayVector arrayVector)
         {
-            return facadeArrayVector.MultiplyVectorByNumber(arrayVector, digit);
+            arrayVector.SortDown();
         }
     }
 }

@@ -42,29 +42,46 @@ namespace MyConsoleApp.Tests
             ArrayVector arrayVector = new ArrayVector(input);
             ClassicAssert.AreEqual(arrayVector.SumLessFromNechetIndex(), expected);
         }
-        [TestCase(new int[]{1,-1}, -1)]
-        [TestCase(new int[]{1,1,5}, 1)]
+        [TestCase(new int[]{2,-1}, 2)]
+        [TestCase(new int[]{1,1,5}, 0)]
         [TestCase(new int[]{1}, 0)]
-        [TestCase(new int[]{-1,-1,5,-1}, 1)]
+        [TestCase(new int[]{-1,-1,5,-1}, 0)]
         public void MultChet(int[] input, int expected)
         {
             ArrayVector arrayVector = new ArrayVector(input);
             ClassicAssert.AreEqual(arrayVector.MultChet(), expected);
         }
+
+        [TestCase(new int[]{2,-1}, -1)]
+        [TestCase(new int[]{1,1,6}, 1)]
+        [TestCase(new int[]{2}, 0)]
+        [TestCase(new int[]{-1,-1,5,-1}, -5)]
         public void MultNechet(int[] input, int expected)
         {
             ArrayVector arrayVector = new ArrayVector(input);
             ClassicAssert.AreEqual(arrayVector.MultNechet(), expected);
         }
+        [TestCase(new int[]{2}, new int[]{2})]
+        [TestCase(new int[]{1,1,6}, new int[]{1,1,6})]
+        [TestCase(new int[]{2,-2}, new int[]{-2,2})]
+        [TestCase(new int[]{-1,-2,5,-1}, new int[]{-2,-1,-1, 5})]
+        [TestCase(new int[]{}, new int[]{})]
         public void SortUp(int[] input, int[] expected)
         {
             ArrayVector arrayVector = new ArrayVector(input);
-            ClassicAssert.AreEqual(arrayVector.MultNechet(), expected);
+            arrayVector.SortUp();
+            ClassicAssert.AreEqual(arrayVector.GetCoordinates(), expected);
         }
+        [TestCase(new int[]{2}, new int[]{2})]
+        [TestCase(new int[]{1,1,6}, new int[]{6,1,1})]
+        [TestCase(new int[]{2,-2}, new int[]{2,-2})]
+        [TestCase(new int[]{-1,-2,5,-1}, new int[]{5, -1,-1,-2})]
+        [TestCase(new int[]{}, new int[]{})]
         public void SortDown(int[] input, int[] expected)
         {
             ArrayVector arrayVector = new ArrayVector(input);
-            ClassicAssert.AreEqual(arrayVector.MultNechet(), expected);
+            arrayVector.SortDown();
+            ClassicAssert.AreEqual(arrayVector.GetCoordinates(), expected);
         }
     }
 }

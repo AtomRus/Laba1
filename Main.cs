@@ -64,10 +64,12 @@ public class Program
             Подготовить отчет о работе.
             ");
             List<string> mainHeaders = new List<string>();
+            mainHeaders.Add("Основное меню");
             mainHeaders.Add("ArrayVector");
             mainHeaders.Add("Vectors");
             mainHeaders.Add("Сказать программе Auf Wiedersehen");
             List<string> firstMenuHeaders = new List<string>();
+            firstMenuHeaders.Add("Меню класса ArraayVector");
             firstMenuHeaders.Add("Создать вектор");
             firstMenuHeaders.Add("Получить координату вектора");
             firstMenuHeaders.Add("Изменить координату вектора");
@@ -80,6 +82,7 @@ public class Program
             firstMenuHeaders.Add("Отсортировать координаты по убыванию");
             firstMenuHeaders.Add("В главное меню");
             List<string> secondMenuHeaders = new List<string>();
+            secondMenuHeaders.Add("Меню класса Vectors");
             secondMenuHeaders.Add("Проверить сложение векторов");
             secondMenuHeaders.Add("Проверить умножение вектора на скаляр");
             secondMenuHeaders.Add("Проверить скалярное произведение");
